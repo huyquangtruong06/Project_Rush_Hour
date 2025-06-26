@@ -31,7 +31,7 @@
    ```bash
    python Main.py
 ## 4️⃣ USER MANUAL
-- ** 🖱️ Mouse Controls:
+- 🖱️ Mouse Controls:
   - Middle mouse (scroll):
 
   - 🔍 Scroll up: Zoom in
@@ -40,12 +40,12 @@
 
   - Left mouse (click & drag): 🧭 Move/pan the map
 
-- ** ⌨️ Keyboard Controls:
+  - ⌨️ Keyboard Controls:
   - R: 🔄 Reset view (zoom to original size)
 
   - + / -: Zoom in/out using keyboard
 
-- ** 📌 Vehicle ID will be displayed in the center of each vehicle (if the box is large enough)
+- 📌 Vehicle ID will be displayed in the center of each vehicle (if the box is large enough)
 ## 5️⃣ SUGGESTIONS FOR FURTHER DEVELOPMENT
 - 🖱️ Allow players to select and move vehicles with the mouse
 - 🎞️ Display each step of the solution path on the screen
