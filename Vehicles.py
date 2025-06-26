@@ -16,7 +16,7 @@ class Vehicle:
         self.id = id
         self.position = position
         self.orientation = orientation
-        self.vType = vtype
+        self.vtype = vtype
         self.color = COLORS[color_idx % len(COLORS)]
 
     def draw(self, surface, cell_size, offset_x, offset_y):
@@ -24,14 +24,14 @@ class Vehicle:
         y_pos = offset_y + self.position[1] * cell_size
 
         if self.orientation == Orientations.horizontal:
-            width = int(self.vType) * cell_size
+            width = int(self.vtype) * cell_size
             height = cell_size
         else:  # vertical
             width = cell_size
-            height = int(self.vType) * cell_size
+            height = int(self.vtype) * cell_size
 
         pygame.draw.rect(surface, self.color, (x_pos, y_pos, width, height))
-        pygame.draw.rect(surface, BLACK, (x_pos, y_pos, width, height), 2)  # Viền
+        pygame.draw.rect(surface, BLACK, (x_pos, y_pos, width, height), 2)  # Rim
 
         # Display ID if it enough big.
         if cell_size > 50:
@@ -50,7 +50,7 @@ class Vehicle:
 
     def __str__(self):
         orientation_txt = "Horizontal" if self.orientation == Orientations.horizontal else "Vertical"
-        type_txt = "Car" if self.vType == VehicleTypes.car else "Truck"
+        type_txt = "Car" if self.vtype == VehicleTypes.car else "Truck"
         pos = str(self.coveredUnits())
         return f"{self.id}: {orientation_txt} {type_txt} at ({self.position[0]},{self.position[1]}) covering {pos}"
 
