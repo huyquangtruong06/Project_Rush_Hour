@@ -31,7 +31,7 @@ class Vehicle:
             height = int(self.vtype) * cell_size
 
         pygame.draw.rect(surface, self.color, (x_pos, y_pos, width, height))
-        pygame.draw.rect(surface, BLACK, (x_pos, y_pos, width, height), 2)  # Viền
+        pygame.draw.rect(surface, BLACK, (x_pos, y_pos, width, height), 2)  # Rim
 
         # Display ID if it enough big.
         if cell_size > 50:
