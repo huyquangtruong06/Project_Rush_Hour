@@ -31,7 +31,7 @@ class Vehicle:
             height = int(self.vtype) * cell_size
 
         pygame.draw.rect(surface, self.color, (x_pos, y_pos, width, height))
-        pygame.draw.rect(surface, BLACK, (x_pos, y_pos, width, height), 2)  # Rim
+        pygame.draw.rect(surface, BLACK, (x_pos, y_pos, width, height), 2)  # Viền
 
         # Display ID if it enough big.
         if cell_size > 50:
@@ -46,7 +46,7 @@ class Vehicle:
         """Returns list of all locations covered by this vehicle."""
         dx = int(self.orientation == Orientations.horizontal)
         dy = int(self.orientation == Orientations.vertical)
-        return [(self.position[0] + dx * i, self.position[1] + dy * i) for i in range(int(self.vType))]
+        return [(self.position[0] + dx * i, self.position[1] + dy * i) for i in range(int(self.vtype))]
 
     def __str__(self):
         orientation_txt = "Horizontal" if self.orientation == Orientations.horizontal else "Vertical"
