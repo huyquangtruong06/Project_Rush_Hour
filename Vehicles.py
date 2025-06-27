@@ -3,6 +3,8 @@ from define import *
 import pygame
 import sys
 
+
+
 class VehicleTypes(IntEnum):
     car = 2
     truck = 3
