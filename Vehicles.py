@@ -20,6 +20,10 @@ class Vehicle:
         self.orientation = orientation
         self.vtype = vtype
         self.color = COLORS[color_idx % len(COLORS)]
+        self.domain = [] #(x, y, cost)
+    def copy(self):
+        """Returns a copy of the vehicle."""
+        return Vehicle(self.id, self.position, self.orientation, self.vtype, COLORS.index(self.color))
 
     def draw(self, surface, cell_size, offset_x, offset_y):
         x_pos = offset_x + self.position[0] * cell_size
