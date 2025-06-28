@@ -41,7 +41,7 @@ def main():
     initial_state = State(map.vehicles)
     cost, result_path = UCSAlgorithm(initial_state).search()
     if result_path is not None:
-        print("Solution found:")
+        print(f"Solution found: cost = {cost}")
     else:
         print("No solution found.")
 
