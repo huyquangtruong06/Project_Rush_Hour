@@ -37,35 +37,40 @@ class State:
             dy = int(vehicle.orientation == Orientations.vertical)
 
             for direction in [-1, 1]:  # Thử cả hai hướng: lùi và tiến
-                # Tính vị trí mới nếu di chuyển 1 bước theo hướng đó
-                new_head_x = vehicle.position[0] + dx * direction
-                new_head_y = vehicle.position[1] + dy * direction
-                new_tail_x = vehicle.position[0] + dx * (int(vehicle.vtype) - 1) + dx * direction
-                new_tail_y = vehicle.position[1] + dy * (int(vehicle.vtype) - 1) + dy * direction
+                step = 1
+                while True:
+                    # Tính vị trí mới nếu di chuyển 1 bước theo hướng đó
+                    new_head_x = vehicle.position[0] + dx * step * direction
+                    new_head_y = vehicle.position[1] + dy * step * direction
+                    new_tail_x = vehicle.position[0] + dx * (int(vehicle.vtype) - 1) + dx * step * direction
+                    new_tail_y = vehicle.position[1] + dy * (int(vehicle.vtype) - 1) + dy * step * direction
 
-                # Kiểm tra vị trí đầu/tail mới có nằm trong bản đồ không
-                if not (0 <= new_head_x < GRID_SIZE and 0 <= new_head_y < GRID_SIZE and
-                        0 <= new_tail_x < GRID_SIZE and 0 <= new_tail_y < GRID_SIZE):
-                    continue
+                    # Kiểm tra vị trí đầu/tail mới có nằm trong bản đồ không
+                    if not (0 <= new_head_x < GRID_SIZE and 0 <= new_head_y < GRID_SIZE and
+                            0 <= new_tail_x < GRID_SIZE and 0 <= new_tail_y < GRID_SIZE):
+                        break
 
-                # Kiểm tra xem vị trí mới có bị chiếm bởi xe khác không
-                if direction == -1:
-                    check_x = vehicle.position[0] - dx
-                    check_y = vehicle.position[1] - dy
-                else:
-                    check_x = vehicle.position[0] + dx * int(vehicle.vtype)
-                    check_y = vehicle.position[1] + dy * int(vehicle.vtype)
+                    # Kiểm tra xem vị trí mới có bị chiếm bởi xe khác không
+                    if direction == -1:
+                        check_x = vehicle.position[0] - dx * step
+                        check_y = vehicle.position[1] - dy * step
+                    else:
+                        check_x = vehicle.position[0] + dx * int((vehicle.vtype - 1)) + dx * step
+                        check_y = vehicle.position[1] + dy * int((vehicle.vtype - 1)) + dy * step
 
-                if not (0 <= check_x < GRID_SIZE and 0 <= check_y < GRID_SIZE):
-                    continue
+                    if not (0 <= check_x < GRID_SIZE and 0 <= check_y < GRID_SIZE):
+                        break
 
-                if current_grid[check_y][check_x] == "0":
+                    if current_grid[check_y][check_x] != "0":
+                        break
                     # Tạo bản sao state mới
                     new_vehicles = [v.copy() for v in self.vehicles]
                     new_vehicles[i].position = (new_head_x, new_head_y)
                     new_state = State(new_vehicles)
                     next_states.append(new_state)
                     next_states_cost.append(vehicle.vtype)  # Chi phí di chuyển là kích thước xe
+
+                    step += 1 # Tiếp tục di chuyển xe cho đến khi không còn di chuyển được nữa
 
         return next_states, next_states_cost
     
