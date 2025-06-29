@@ -2,7 +2,7 @@ from Vehicles import *
 import copy
 
 class Map:
-    def __init__(self, screen):
+    def __init__(self, screen, parent = None, cost = 0):
         self.screen = screen
         self.cell_size = initial_cell_size
         self.offset_x = (WINDOW_WIDTH - GRID_SIZE * self.cell_size) // 2
@@ -13,6 +13,9 @@ class Map:
         
         self.vehicles = []
         self.vehicles_goal = None
+
+        self.parent = parent
+        self.cost = cost
 
     def copy(self):
         """Create a copy of the current map"""
@@ -107,7 +110,7 @@ class Map:
             else:  # vertical
                 for i in range(int(vehicle.vtype)):
                     tmp[vehicle.position[1] + i][vehicle.position[0]] = 1
-        #print(tmp)
+        # print(tmp)
         for i in range(GRID_SIZE):
             for j in range(GRID_SIZE):
                 print(tmp[i][j], end=' ')
@@ -154,6 +157,9 @@ class Map:
             self.setup_goal_cars()
         return self.vehicles_goal
     
+    def get_map_signature(self):
+        return tuple( v.position for v in self.vehicles)
+
     def sort_vehicles(self):
         """Sort vehicles by their position in the grid"""
         tmp = []

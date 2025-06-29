@@ -5,6 +5,7 @@ from Vehicles import Vehicle, Orientations, VehicleTypes
 from Window import *
 from Event import EventHandler
 from DFS_Algorithm import DFSAlgorithm
+from UCS_Algorithm import UCSAlgorithm
 
 def main():
     run = True
@@ -28,18 +29,22 @@ def main():
     print(f"Goal car: {goal.id} at position {goal.position} with orientation {goal.orientation} and type {goal.vtype}\n")
     DFS = DFSAlgorithm(map)
     result = DFS.search(DFS.map)
+    UCS = UCSAlgorithm(map)
+    result1 = UCS.search()
 
-    '''if result is not None:
+    if result1 is not None:
         print("Solution found:")
-        result.get_domain_cars()
-        result.draw()
-    else:
-        print("No solution found.")'''
-    if result is not None:
-        print(f"Solution found with {len(DFS.solution_path)} steps")
-        map.vehicles = DFS.solution_path[0].vehicles
+        result1.get_domain_cars()
+        result1.draw()
     else:
         print("No solution found.")
+    
+
+    # if result is not None:
+    #     print(f"Solution found with {len(DFS.solution_path)} steps")
+    #     map.vehicles = DFS.solution_path[0].vehicles
+    # else:
+    #     print("No solution found.")
 
     handler = EventHandler(map, DFS)
     clock = pygame.time.Clock()

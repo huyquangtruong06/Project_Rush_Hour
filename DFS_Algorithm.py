@@ -16,7 +16,7 @@ class DFSAlgorithm:
         if path is None:
             path = []
 
-        cur_signature = tuple(v.position for v in cur_map.vehicles)
+        cur_signature = cur_map.get_map_signature()
 
         if cur_signature in self.visited:
             return None
