@@ -5,18 +5,13 @@ class DFSAlgorithm:
     def __init__(self, map):
         self.map = map
         self.visited = set()
-        self.solution_path = []  # <-- danh sách lưu các bản đồ dẫn đến goal
-        # HUY
-        self.current_step = 0
-        self.auto_play = False
-        self.step_delay = 500  # ms
-        self.last_step_time = 0
+        self.solution_path = []  # danh sách lưu các bản đồ dẫn đến goal
 
     def search(self, cur_map, path=None):
         if path is None:
             path = []
 
-        cur_signature = cur_map.get_map_signature()
+        cur_signature = tuple(v.position for v in cur_map.vehicles)
 
         if cur_signature in self.visited:
             return None
@@ -48,23 +43,10 @@ class DFSAlgorithm:
         path.pop()  # backtrack nếu không đi được
         return None
     
-    # BY HUY QUANG TRUONG.
-    # bước tiếp theo
-    def get_next_step(self):
-        if self.current_step < len(self.solution_path) - 1:
-            self.current_step += 1
-            return self.solution_path[self.current_step]
-        return None
+   
 
-    # bước lùi lại 
-    def get_previous_step(self):
-        if self.current_step > 0:
-            self.current_step -= 1
-            return self.solution_path[self.current_step]
-        return None
 
-    # tự động chơi
-    def toggle_auto_play(self):
-        self.auto_play = not self.auto_play
-        self.last_step_time = pygame.time.get_ticks()
+
+    
+    
 

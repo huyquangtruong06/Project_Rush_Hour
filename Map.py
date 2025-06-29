@@ -26,7 +26,8 @@ class Map:
         new_map.dragging = self.dragging
         new_map.last_mouse_pos = self.last_mouse_pos
         new_map.vehicles = [vehicle.copy() for vehicle in self.vehicles]
-        
+        new_map.parent = self.parent
+        new_map.cost = self.cost
         return new_map
 
     def draw(self):
