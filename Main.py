@@ -5,6 +5,7 @@ from Vehicles import Vehicle, Orientations, VehicleTypes
 from Window import *
 from Event import EventHandler
 from DFS_Algorithm import DFSAlgorithm
+from KeyboardOperation import KeyboardOperation
 
 def main():
     run = True
@@ -23,25 +24,29 @@ def main():
     ]
 
     map.vehicles = copy.deepcopy(vehicles)
+    initial_vehicles = copy.deepcopy(vehicles)
     map.get_domain_cars()
     goal = map.get_goal_cars()
     print(f"Goal car: {goal.id} at position {goal.position} with orientation {goal.orientation} and type {goal.vtype}\n")
-    DFS = DFSAlgorithm(map)
-    result = DFS.search(DFS.map)
+    
 
-    '''if result is not None:
-        print("Solution found:")
-        result.get_domain_cars()
-        result.draw()
-    else:
-        print("No solution found.")'''
+    DFS = DFSAlgorithm(map)
+    DFS.current_step = 0
+    result = DFS.search(map.copy())
+    controller = KeyboardOperation(DFS, DFS.solution_path)
+    handler = EventHandler(map, controller, initial_vehicles)
+
     if result is not None:
         print(f"Solution found with {len(DFS.solution_path)} steps")
+        # Set initial state
         map.vehicles = DFS.solution_path[0].vehicles
+        DFS.current_step = 0
     else:
         print("No solution found.")
 
-    handler = EventHandler(map, DFS)
+    #handler = EventHandler(map, DFS)
+    
+
     clock = pygame.time.Clock()
 
     while run:
@@ -54,11 +59,11 @@ def main():
         # Display step information
         font = pygame.font.SysFont('Arial', 16)
         if DFS.solution_path:
-            step_text = f"Step: {DFS.current_step + 1}/{len(DFS.solution_path)}"
+            step_text = f"Step: {controller.current_step + 1}/{len(DFS.solution_path)}"
             text_surface = font.render(step_text, True, BLACK)
             window.screen.blit(text_surface, (10, 50))
             
-            if DFS.auto_play:
+            if controller.auto_play:
                 auto_text = font.render("Auto-play: ON", True, GREEN)
             else:
                 auto_text = font.render("Auto-play: OFF", True, RED)
