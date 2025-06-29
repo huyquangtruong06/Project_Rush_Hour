@@ -93,7 +93,7 @@ class Map:
                 return True
         return False
     
-    def get_domain_cars(self):
+    def get_simple_map(self):
         tmp = [
             [0,0,0,0,0,0],
             [0,0,0,0,0,0],
@@ -102,14 +102,27 @@ class Map:
             [0,0,0,0,0,0],
             [0,0,0,0,0,0]
         ]
-        
+        index = 1
         for vehicle in self.vehicles:
             if vehicle.orientation == Orientations.horizontal:
                 for i in range(int(vehicle.vtype)):
-                    tmp[vehicle.position[1]][vehicle.position[0] + i] = 1
+                    tmp[vehicle.position[1]][vehicle.position[0] + i] = index
             else:  # vertical
                 for i in range(int(vehicle.vtype)):
-                    tmp[vehicle.position[1] + i][vehicle.position[0]] = 1
+                    tmp[vehicle.position[1] + i][vehicle.position[0]] = index
+            index += 1
+        return tmp
+
+    def cal_value_heuristic(self):
+        tmp = self.get_simple_map()
+        value = 0
+        for i in tmp[2]:
+            if i != 0:
+                value += 1
+        return value
+
+    def get_domain_cars(self):
+        tmp = self.get_simple_map()
         # print(tmp)
         for i in range(GRID_SIZE):
             for j in range(GRID_SIZE):

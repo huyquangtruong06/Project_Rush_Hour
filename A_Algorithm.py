@@ -1,7 +1,7 @@
 from BinaryMinHeap import BinaryMinHeap  # import cây nhị phân đã viết
 import copy
 
-class UCSAlgorithm:
+class A_Algorithm:
     def __init__(self, start_map):
         self.start_map = start_map
         self.solution_path = []
@@ -28,7 +28,7 @@ class UCSAlgorithm:
                     new_vehicle.position = (new_x, new_y)
 
                     # Cập nhật thông tin map mới
-                    new_map.cost = current_map.cost + move_cost
+                    new_map.cost = current_map.cost - current_map.cal_value_heuristic() + move_cost + new_map.cal_value_heuristic()
                     new_map.parent = current_map
 
                     # Thêm vào heap nếu chưa tồn tại

@@ -6,6 +6,7 @@ from Window import *
 from Event import EventHandler
 from DFS_Algorithm import DFSAlgorithm
 from UCS_Algorithm import UCSAlgorithm
+from A_Algorithm import A_Algorithm
 
 def main():
     run = True
@@ -31,15 +32,24 @@ def main():
     result = DFS.search(DFS.map)
     UCS = UCSAlgorithm(map)
     result1 = UCS.search()
+    A = A_Algorithm(map)
+    result2 = A.search()
 
-    if result1 is not None:
+    #test result
+    if result2 is not None:
         print("Solution found:")
-        result1.get_domain_cars()
-        result1.draw()
+        result2.get_domain_cars()
+        result2.draw()
     else:
         print("No solution found.")
     
-
+    for map in A.solution_path:
+        tmp = map.get_simple_map()
+        for i in range(len(tmp)):
+            for j in range(len(tmp[i])):
+                print(tmp[i][j], end=' ')
+            print("\n")
+        print("\n")
     # if result is not None:
     #     print(f"Solution found with {len(DFS.solution_path)} steps")
     #     map.vehicles = DFS.solution_path[0].vehicles
