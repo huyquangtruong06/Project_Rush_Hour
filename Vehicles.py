@@ -3,8 +3,6 @@ from define import *
 import pygame
 import sys
 
-
-
 class VehicleTypes(IntEnum):
     car = 2
     truck = 3
@@ -21,6 +19,7 @@ class Vehicle:
         self.vtype = vtype
         self.color = COLORS[color_idx % len(COLORS)]
         self.domain = [] #(x, y, cost)
+        
     def copy(self):
         """Returns a copy of the vehicle."""
         return Vehicle(self.id, self.position, self.orientation, self.vtype, COLORS.index(self.color))

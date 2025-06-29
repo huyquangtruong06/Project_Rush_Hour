@@ -144,12 +144,6 @@ class Map:
                         break
                     i += 1
 
-        # for vehicle in self.vehicles:
-        #     print(f"Vehicle {vehicle.id} domain:")
-        #     for i in range(len(vehicle.domain)):
-        #         print(vehicle.domain[i])
-        #     print("\n")
-
     def setup_goal_cars(self):
         for vehicle in self.vehicles:
             if vehicle.orientation == Orientations.horizontal and vehicle.position[1] == 2:
@@ -166,3 +160,8 @@ class Map:
         for vehicle in self.vehicles:
             if vehicle.id != self.get_goal_cars().id:
                 tmp.append(vehicle)
+
+    def reset_to_state(self, state):
+        self.vehicles = [v.copy() for v in state.vehicles]
+        self.vehicles_goal = None
+        self.setup_goal_cars()  
