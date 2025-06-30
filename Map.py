@@ -124,12 +124,6 @@ class Map:
 
     def get_domain_cars(self):
         tmp = self.get_simple_map()
-        # print(tmp)
-        for i in range(GRID_SIZE):
-            for j in range(GRID_SIZE):
-                print(tmp[i][j], end=' ')
-            print("\n")
-        print("\n")
         
         for vehicle in self.vehicles:
             vehicle.domain = []
@@ -173,13 +167,6 @@ class Map:
     
     def get_map_signature(self):
         return tuple( v.position for v in self.vehicles)
-
-    def sort_vehicles(self):
-        """Sort vehicles by their position in the grid"""
-        tmp = []
-        for vehicle in self.vehicles:
-            if vehicle.id != self.get_goal_cars().id:
-                tmp.append(vehicle)
 
     def reset_to_state(self, state):
         self.vehicles = [v.copy() for v in state.vehicles]

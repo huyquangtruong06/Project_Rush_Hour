@@ -1,52 +1,36 @@
 from Vehicles import Vehicle, Orientations, VehicleTypes
 
 vehicles_map = [
-    # Map 1: Dễ (3 xe)
+    # Map 1: 
     [
         Vehicle("A", (2, 2), Orientations.horizontal, VehicleTypes.car, 0),  # Xe cần thoát
         Vehicle("B", (0, 0), Orientations.vertical, VehicleTypes.car, 1),
         Vehicle("C", (0, 3), Orientations.vertical, VehicleTypes.car, 2),
     ],
 
-    # Map 2: Dễ vừa (4 xe)
+    # Map 2:
     [
-        Vehicle("A", (2, 2), Orientations.horizontal, VehicleTypes.car, 0),
-        Vehicle("B", (1, 0), Orientations.vertical, VehicleTypes.car, 1),
-        Vehicle("C", (4, 1), Orientations.vertical, VehicleTypes.car, 2),
-        Vehicle("D", (3, 4), Orientations.horizontal, VehicleTypes.car, 3),
+        Vehicle("A", (0, 2), Orientations.horizontal, VehicleTypes.car, 0),
+        Vehicle("B", (1, 1), Orientations.horizontal, VehicleTypes.car, 1),
+        Vehicle("C", (2, 3), Orientations.vertical, VehicleTypes.car, 2),
+        Vehicle("D", (3, 1), Orientations.horizontal, VehicleTypes.car, 3),
+        Vehicle("E", (3, 2), Orientations.vertical, VehicleTypes.car, 4),
+        Vehicle("F", (3, 5), Orientations.horizontal, VehicleTypes.car, 5),
     ],
 
-    # Map 3: Trung bình (5 xe)
+    # Map 3: 
     [
-        Vehicle("A", (2, 2), Orientations.horizontal, VehicleTypes.car, 0),
-        Vehicle("B", (0, 0), Orientations.vertical, VehicleTypes.truck, 1),
-        Vehicle("C", (1, 3), Orientations.vertical, VehicleTypes.car, 2),
-        Vehicle("D", (3, 0), Orientations.horizontal, VehicleTypes.car, 3),
-        Vehicle("E", (4, 4), Orientations.vertical, VehicleTypes.car, 4),
+        Vehicle("A", (0, 2), Orientations.horizontal, VehicleTypes.car, 0),
+        Vehicle("B", (0, 3), Orientations.vertical, VehicleTypes.truck, 1),
+        Vehicle("C", (1, 5), Orientations.horizontal, VehicleTypes.truck, 2),
+        Vehicle("D", (2, 0), Orientations.horizontal, VehicleTypes.truck, 3),
+        Vehicle("E", (2, 2), Orientations.vertical, VehicleTypes.truck, 4),
+        Vehicle("F", (3, 1), Orientations.vertical, VehicleTypes.car, 5),
+        Vehicle("G", (3, 3), Orientations.horizontal, VehicleTypes.car, 6),
+        Vehicle("H", (4, 4), Orientations.vertical, VehicleTypes.car, 7),
     ],
 
-    # Map 4: Trung bình-khá (6 xe)
-    [
-        Vehicle("A", (1, 2), Orientations.horizontal, VehicleTypes.car, 0),
-        Vehicle("B", (0, 0), Orientations.vertical, VehicleTypes.truck, 1),
-        Vehicle("C", (0, 4), Orientations.horizontal, VehicleTypes.car, 2),
-        Vehicle("D", (3, 1), Orientations.vertical, VehicleTypes.truck, 3),
-        Vehicle("E", (4, 3), Orientations.horizontal, VehicleTypes.car, 4),
-        Vehicle("F", (5, 0), Orientations.vertical, VehicleTypes.car, 5),
-    ],
-
-    # Map 5: Khó (7 xe)
-    [
-        Vehicle("A", (2, 2), Orientations.horizontal, VehicleTypes.car, 0),
-        Vehicle("B", (0, 0), Orientations.vertical, VehicleTypes.truck, 1),
-        Vehicle("C", (1, 1), Orientations.horizontal, VehicleTypes.truck, 2),
-        Vehicle("D", (3, 0), Orientations.vertical, VehicleTypes.car, 3),
-        Vehicle("E", (4, 2), Orientations.vertical, VehicleTypes.truck, 4),
-        Vehicle("F", (5, 3), Orientations.horizontal, VehicleTypes.car, 5),
-        Vehicle("G", (0, 5), Orientations.horizontal, VehicleTypes.car, 6),
-    ],
-
-    # Map 6: Khó hơn (7 xe với nhiều chướng ngại)
+    # Map 4: 
     [
         Vehicle("A", (0, 2), Orientations.horizontal, VehicleTypes.car, 0),
         Vehicle("B", (2, 3), Orientations.vertical, VehicleTypes.truck, 1),
@@ -57,54 +41,87 @@ vehicles_map = [
         Vehicle("G", (4, 3), Orientations.horizontal, VehicleTypes.car, 6),
     ],
 
-    # Map 7: Rối rắm (8 xe)
+    # Map 5: 
     [
-        Vehicle("A", (2, 2), Orientations.horizontal, VehicleTypes.car, 0),
-        Vehicle("B", (0, 0), Orientations.vertical, VehicleTypes.truck, 1),
-        Vehicle("C", (0, 3), Orientations.horizontal, VehicleTypes.truck, 2),
-        Vehicle("D", (1, 1), Orientations.vertical, VehicleTypes.truck, 3),
-        Vehicle("E", (3, 0), Orientations.vertical, VehicleTypes.car, 4),
-        Vehicle("F", (4, 2), Orientations.horizontal, VehicleTypes.truck, 5),
-        Vehicle("G", (5, 4), Orientations.vertical, VehicleTypes.car, 6),
-        Vehicle("H", (2, 5), Orientations.horizontal, VehicleTypes.car, 7),
+        Vehicle("A", (0, 2), Orientations.horizontal, VehicleTypes.car, 0),
+        Vehicle("B", (0, 5), Orientations.horizontal, VehicleTypes.car, 1),
+        Vehicle("C", (1, 0), Orientations.horizontal, VehicleTypes.truck, 2),
+        Vehicle("D", (2, 3), Orientations.vertical, VehicleTypes.car, 3),
+        Vehicle("E", (3, 1), Orientations.vertical, VehicleTypes.car, 4),
+        Vehicle("F", (3, 3), Orientations.vertical, VehicleTypes.car, 5),
+        Vehicle("G", (4, 0), Orientations.vertical, VehicleTypes.truck, 6),
+        Vehicle("H", (4, 3), Orientations.horizontal, VehicleTypes.car, 7),
+        Vehicle("I", (4, 5), Orientations.horizontal, VehicleTypes.car, 8),
+        Vehicle("J", (5, 0), Orientations.vertical, VehicleTypes.truck, 9),
     ],
 
-    # Map 8: Khó cấp độ cao (8 xe phức tạp)
+    # Map 6: 
     [
-        Vehicle("A", (2, 2), Orientations.horizontal, VehicleTypes.car, 0),
-        Vehicle("B", (0, 0), Orientations.vertical, VehicleTypes.truck, 1),
+        Vehicle("A", (0, 2), Orientations.horizontal, VehicleTypes.car, 0),
+        Vehicle("B", (0, 0), Orientations.vertical, VehicleTypes.car, 1),
         Vehicle("C", (1, 1), Orientations.horizontal, VehicleTypes.truck, 2),
-        Vehicle("D", (3, 0), Orientations.vertical, VehicleTypes.truck, 3),
-        Vehicle("E", (4, 1), Orientations.horizontal, VehicleTypes.truck, 4),
-        Vehicle("F", (0, 4), Orientations.vertical, VehicleTypes.truck, 5),
-        Vehicle("G", (2, 5), Orientations.horizontal, VehicleTypes.car, 6),
-        Vehicle("H", (5, 3), Orientations.vertical, VehicleTypes.truck, 7),
+        Vehicle("D", (2, 0), Orientations.horizontal, VehicleTypes.car, 3),
+        Vehicle("E", (4, 0), Orientations.vertical, VehicleTypes.truck, 4),
+        Vehicle("F", (1, 3), Orientations.vertical, VehicleTypes.car, 5),
+        Vehicle("G", (2, 3), Orientations.horizontal, VehicleTypes.car, 6),
+        Vehicle("H", (2, 4), Orientations.vertical, VehicleTypes.car, 7),
+        Vehicle("I", (3, 4), Orientations.horizontal, VehicleTypes.car, 8),
+        Vehicle("J", (5, 2), Orientations.vertical, VehicleTypes.truck, 9),
     ],
 
-    # Map 9: Cực khó (9 xe)
+    # Map 7: 
     [
-        Vehicle("A", (2, 2), Orientations.horizontal, VehicleTypes.car, 0),
-        Vehicle("B", (0, 0), Orientations.vertical, VehicleTypes.truck, 1),
-        Vehicle("C", (0, 3), Orientations.vertical, VehicleTypes.truck, 2),
-        Vehicle("D", (1, 1), Orientations.horizontal, VehicleTypes.truck, 3),
-        Vehicle("E", (3, 0), Orientations.vertical, VehicleTypes.truck, 4),
-        Vehicle("F", (4, 1), Orientations.horizontal, VehicleTypes.truck, 5),
-        Vehicle("G", (1, 4), Orientations.vertical, VehicleTypes.truck, 6),
-        Vehicle("H", (3, 4), Orientations.horizontal, VehicleTypes.car, 7),
-        Vehicle("I", (5, 5), Orientations.horizontal, VehicleTypes.truck, 8),
+        Vehicle("A", (0, 2), Orientations.horizontal, VehicleTypes.car, 0),
+        Vehicle("B", (0, 5), Orientations.horizontal, VehicleTypes.car, 1),
+        Vehicle("C", (1, 3), Orientations.horizontal, VehicleTypes.truck, 2),
+        Vehicle("D", (2, 0), Orientations.horizontal, VehicleTypes.car, 3),
+        Vehicle("E", (2, 1), Orientations.horizontal, VehicleTypes.car, 4),
+        Vehicle("F", (2, 4), Orientations.vertical, VehicleTypes.car, 5),
+        Vehicle("G", (3, 5), Orientations.horizontal, VehicleTypes.car, 6),
+        Vehicle("H", (4, 0), Orientations.vertical, VehicleTypes.truck, 7),
+        Vehicle("I", (4, 4), Orientations.horizontal, VehicleTypes.car, 8),
+        Vehicle("J", (5, 1), Orientations.vertical, VehicleTypes.truck, 9),
     ],
 
-    # Map 10: Siêu khó (10 xe với nhiều bẫy)
+    # Map 8: 
     [
-        Vehicle("A", (2, 2), Orientations.horizontal, VehicleTypes.car, 0),
-        Vehicle("B", (0, 0), Orientations.vertical, VehicleTypes.truck, 1),
-        Vehicle("C", (0, 3), Orientations.vertical, VehicleTypes.truck, 2),
-        Vehicle("D", (1, 1), Orientations.horizontal, VehicleTypes.truck, 3),
-        Vehicle("E", (3, 0), Orientations.vertical, VehicleTypes.truck, 4),
-        Vehicle("F", (4, 1), Orientations.horizontal, VehicleTypes.truck, 5),
-        Vehicle("G", (1, 4), Orientations.vertical, VehicleTypes.truck, 6),
-        Vehicle("H", (3, 3), Orientations.vertical, VehicleTypes.truck, 7),
-        Vehicle("I", (5, 0), Orientations.horizontal, VehicleTypes.truck, 8),
-        Vehicle("J", (5, 4), Orientations.vertical, VehicleTypes.truck, 9),
+        Vehicle("A", (0, 2), Orientations.horizontal, VehicleTypes.car, 0),
+        Vehicle("B", (0, 3), Orientations.vertical, VehicleTypes.car, 1),
+        Vehicle("C", (2, 0), Orientations.vertical, VehicleTypes.truck, 2),
+        Vehicle("D", (1, 3), Orientations.horizontal, VehicleTypes.car, 3),
+        Vehicle("E", (3, 1), Orientations.vertical, VehicleTypes.truck, 4),
+        Vehicle("F", (4, 0), Orientations.horizontal, VehicleTypes.car, 5),
+        Vehicle("G", (4, 1), Orientations.horizontal, VehicleTypes.car, 6),
+        Vehicle("H", (4, 3), Orientations.horizontal, VehicleTypes.car, 7),
+        Vehicle("I", (3, 5), Orientations.horizontal, VehicleTypes.car, 8),
+        Vehicle("J", (5, 4), Orientations.vertical, VehicleTypes.car, 9),
+    ],
+
+    # Map 9: 
+    [
+        Vehicle("A", (0, 2), Orientations.horizontal, VehicleTypes.car, 0),
+        Vehicle("B", (0, 0), Orientations.vertical, VehicleTypes.car, 1),
+        Vehicle("C", (0, 4), Orientations.vertical, VehicleTypes.car, 2),
+        Vehicle("D", (1, 1), Orientations.horizontal, VehicleTypes.car, 3),
+        Vehicle("E", (1, 5), Orientations.horizontal, VehicleTypes.truck, 4),
+        Vehicle("F", (2, 3), Orientations.vertical, VehicleTypes.car, 5),
+        Vehicle("G", (3, 0), Orientations.vertical, VehicleTypes.car, 6),
+        Vehicle("H", (3, 3), Orientations.vertical, VehicleTypes.car, 7),
+        Vehicle("I", (4, 2), Orientations.vertical, VehicleTypes.car, 8),
+        Vehicle("J", (4, 4), Orientations.horizontal, VehicleTypes.car, 9),
+        Vehicle("K", (4, 5), Orientations.horizontal, VehicleTypes.car, 10),
+        Vehicle("L", (5, 1), Orientations.vertical, VehicleTypes.truck, 11),
+    ],
+    # Map 10: 
+    [
+        Vehicle("A", (0, 2), Orientations.horizontal, VehicleTypes.car, 0),
+        Vehicle("B", (0, 3), Orientations.horizontal, VehicleTypes.truck, 1),
+        Vehicle("C", (1, 1), Orientations.horizontal, VehicleTypes.car, 2),
+        Vehicle("D", (1, 4), Orientations.vertical, VehicleTypes.car, 3),
+        Vehicle("E", (2, 4), Orientations.horizontal, VehicleTypes.car, 4),
+        Vehicle("F", (3, 5), Orientations.horizontal, VehicleTypes.truck, 5),
+        Vehicle("G", (4, 0), Orientations.horizontal, VehicleTypes.car, 6),
+        Vehicle("H", (4, 1), Orientations.vertical, VehicleTypes.truck, 7),
+        Vehicle("I", (5, 1), Orientations.vertical, VehicleTypes.car, 8),
     ],
 ]
