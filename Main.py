@@ -1,5 +1,6 @@
 import pygame
 import copy
+from define import *
 from Map import Map
 from Vehicles import Vehicle, Orientations, VehicleTypes
 from Window import *
@@ -8,29 +9,23 @@ from DFS_Algorithm import DFSAlgorithm
 from UCS_Algorithm import UCSAlgorithm
 from A_Algorithm import A_Algorithm
 from KeyboardOperation import KeyboardOperation
-
+from Button import Button
+from Support import *
+from Levels import *
 def main():
     run = True
     pygame.init()
     window = Window()
     map = Map(window.screen)
+    index =select_levels(window.screen)
     # handler = EventHandler(map)
-    vehicles = [
-        Vehicle("A", (0, 2), Orientations.horizontal, VehicleTypes.car, 0),
-        Vehicle("B", (2, 3), Orientations.vertical, VehicleTypes.truck, 1),
-        Vehicle("C", (3, 0), Orientations.vertical, VehicleTypes.car, 2),
-        Vehicle("D", (3, 2), Orientations.vertical, VehicleTypes.car, 3),
-        Vehicle("E", (3, 4), Orientations.horizontal, VehicleTypes.car, 4),
-        Vehicle("F", (5, 4), Orientations.vertical, VehicleTypes.car, 5),
-        Vehicle("G", (4, 3), Orientations.horizontal, VehicleTypes.car, 6),
-    ]
-
-    map.vehicles = copy.deepcopy(vehicles)
-    initial_vehicles = copy.deepcopy(vehicles)
+    map.vehicles = copy.deepcopy(vehicles_map[index])
+    initial_vehicles = copy.deepcopy(vehicles_map[index])
     map.get_domain_cars()
     goal = map.get_goal_cars()
+
+
     print(f"Goal car: {goal.id} at position {goal.position} with orientation {goal.orientation} and type {goal.vtype}\n")
-    
 
     DFS = DFSAlgorithm(map)
     DFS.current_step = 0

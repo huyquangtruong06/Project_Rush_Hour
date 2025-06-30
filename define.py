@@ -1,4 +1,5 @@
 # Setting parameters
+import pygame
 GRID_SIZE = 6
 BASE_CELL_SIZE = 80 # Base cell size
 MIN_CELL_SIZE = 40 # Minimum size when zoomed out
@@ -21,4 +22,21 @@ YELLOW = (255, 255, 0)
 PURPLE = (128, 0, 128)
 PINK = (255, 192, 203)
 ORANGE = (255, 165, 0)
-COLORS = [RED, BLUE, GREEN, YELLOW, PURPLE, PINK, ORANGE, (0, 255, 255), (128, 0, 0), (0, 128, 0)]
+MAROON = (128, 0, 0)
+OLIVE = (0, 128, 0)
+CYAN = (0, 255, 255)
+COLORS = [RED, BLUE, GREEN, YELLOW, PURPLE, PINK, ORANGE, CYAN, MAROON, OLIVE]
+
+#level game
+LEVELS = [
+    pygame.image.load("level button/lv1.png"),
+    pygame.image.load("level button/lv2.png"),
+    pygame.image.load("level button/lv3.png"),
+    pygame.image.load("level button/lv4.png"),
+    pygame.image.load("level button/lv5.png"),
+    pygame.image.load("level button/lv6.png"),
+    pygame.image.load("level button/lv7.png"),
+    pygame.image.load("level button/lv8.png"),
+    pygame.image.load("level button/lv9.png"),
+    pygame.image.load("level button/lv10.png"),
+]
