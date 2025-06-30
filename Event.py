@@ -66,7 +66,7 @@ class EventHandler:
         elif event.key == pygame.K_i:
             self.ResetInitial()
             i_sound.play()
-        elif event.key == pygame.K_b:
+        elif event.key == pygame.K_ESCAPE:
             return False
         return True
 

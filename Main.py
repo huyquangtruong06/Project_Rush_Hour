@@ -87,13 +87,13 @@ def main():
             if controller.Solution_Path:
                 step_text = f"Step: {controller.current_step + 1}/{len(controller.Solution_Path)}"
                 text_surface = font.render(step_text, True, BLACK)
-                window.screen.blit(text_surface, (10, 50))
+                window.screen.blit(text_surface, (10, 110))
                 
                 if controller.auto_play:
                     auto_text = font.render("Auto-play: ON", True, GREEN)
                 else:
                     auto_text = font.render("Auto-play: OFF", True, RED)
-                window.screen.blit(auto_text, (10, 70))
+                window.screen.blit(auto_text, (10, 130))
             
             pygame.display.update()
             clock.tick(60)
