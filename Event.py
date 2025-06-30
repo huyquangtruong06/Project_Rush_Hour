@@ -41,7 +41,8 @@ class EventHandler:
                     self.map.last_mouse_pos = event.pos
 
             elif event.type == pygame.KEYDOWN:
-                self._handle_control_keys(event)
+                if self._handle_control_keys(event) == False:
+                    return False
 
         # auto-play
         self.AutoPlay(current_time)
@@ -65,6 +66,9 @@ class EventHandler:
         elif event.key == pygame.K_i:
             self.ResetInitial()
             i_sound.play()
+        elif event.key == pygame.K_b:
+            return False
+        return True
 
     def NextStep(self):
         next_state = self.KeyboardOperation.get_next_step()
@@ -101,3 +105,5 @@ class EventHandler:
         # Run dfs from a new state
         self.KeyboardOperation.Algorithm.search(self.map.copy())
         self.KeyboardOperation.Solution_Path = self.KeyboardOperation.Algorithm.solution_path
+
+

@@ -30,17 +30,19 @@ COLORS = [RED, BLUE, GREEN, YELLOW, PURPLE, PINK, ORANGE, CYAN, MAROON, OLIVE]
 
 #level game
 LEVELS = [
-    pygame.image.load("level button/lv1.png"),
-    pygame.image.load("level button/lv2.png"),
-    pygame.image.load("level button/lv3.png"),
-    pygame.image.load("level button/lv4.png"),
-    pygame.image.load("level button/lv5.png"),
-    pygame.image.load("level button/lv6.png"),
-    pygame.image.load("level button/lv7.png"),
-    pygame.image.load("level button/lv8.png"),
-    pygame.image.load("level button/lv9.png"),
-    pygame.image.load("level button/lv10.png"),
+    pygame.image.load("button/lv1.png"),
+    pygame.image.load("button/lv2.png"),
+    pygame.image.load("button/lv3.png"),
+    pygame.image.load("button/lv4.png"),
+    pygame.image.load("button/lv5.png"),
+    pygame.image.load("button/lv6.png"),
+    pygame.image.load("button/lv7.png"),
+    pygame.image.load("button/lv8.png"),
+    pygame.image.load("button/lv9.png"),
+    pygame.image.load("button/lv10.png"),
 ]
 
+start_button = pygame.image.load("button/start.png")
+quit_button = pygame.image.load("button/end.png")
 forest_green = ((0,50,0))
 
