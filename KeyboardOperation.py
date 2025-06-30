@@ -1,5 +1,11 @@
 from Map import *
 import pygame
+import pygame.mixer
+
+pygame.mixer.init()
+move_sound = pygame.mixer.Sound("moves.mp3")
+space_sound = pygame.mixer.Sound("space.mp3")
+i_sound = pygame.mixer.Sound("button_I.mp3")
 
 class KeyboardOperation:
     def __init__(self, Algorithm, Solution_Path):
@@ -14,6 +20,7 @@ class KeyboardOperation:
     def get_next_step(self):
         if self.current_step < len(self.Solution_Path) - 1:
             self.current_step += 1
+            move_sound.play()
             return self.Solution_Path[self.current_step]
         return None
 
@@ -21,6 +28,7 @@ class KeyboardOperation:
     def get_previous_step(self):
         if self.current_step > 0:
             self.current_step -= 1
+            move_sound.play()
             return self.Solution_Path[self.current_step]
         
         # Nếu đang ở bước 0, vẫn trả lại bước 0 để đảm bảo giao diện cập nhật
@@ -29,6 +37,7 @@ class KeyboardOperation:
     # auto
     def toggle_auto_play(self):
         self.auto_play = not self.auto_play
+        space_sound.play()
         self.last_step_time = pygame.time.get_ticks()
 
     def reset(self, initial_map):
@@ -42,7 +51,7 @@ class KeyboardOperation:
         result = self.Algorithm.search(initial_map.copy())
         if result is not None:
             self.Solution_Path = self.Algorithm.Solution_Path
-
+     
     
 
 

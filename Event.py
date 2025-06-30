@@ -1,7 +1,8 @@
 import pygame
 from define import *
 import copy
-
+from pygame.locals import *
+from KeyboardOperation import move_sound, space_sound, i_sound
 class EventHandler:
     def __init__(self, map, KeyboardOperation, initial_vehicles):
         self.map = map
@@ -56,12 +57,14 @@ class EventHandler:
             self.map.reset_view()
         elif event.key == pygame.K_RIGHT:
             self.NextStep()
+            
         elif event.key == pygame.K_LEFT:
             self.LastStep()
         elif event.key == pygame.K_SPACE:
             self.KeyboardOperation.toggle_auto_play()
         elif event.key == pygame.K_i:
             self.ResetInitial()
+            i_sound.play()
 
     def NextStep(self):
         next_state = self.KeyboardOperation.get_next_step()
