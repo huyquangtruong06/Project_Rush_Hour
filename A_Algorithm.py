@@ -6,7 +6,9 @@ class A_Algorithm:
         self.start_map = start_map
         self.solution_path = []
 
-    def search(self):
+    def search(self, start_map=None):  # <-- Thêm tham số tùy chọn
+        if start_map is not None:
+            self.start_map = start_map
         heap = BinaryMinHeap()
         heap.push(self.start_map)
 

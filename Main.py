@@ -12,12 +12,22 @@ from KeyboardOperation import KeyboardOperation
 from Button import Button
 from Support import *
 from Levels import *
+from BFS_Algorithm import BFSAlgorithm
+from Menu import Menu
+
 def main():
     run = True
     pygame.init()
     window = Window()
     map = Map(window.screen)
+
     index =select_levels(window.screen)
+
+    menu = Menu(window.screen)
+    algo_choice = menu.get_algorithm_choice()
+    if algo_choice is None:
+        return
+    
     # handler = EventHandler(map)
     map.vehicles = copy.deepcopy(vehicles_map[index])
     initial_vehicles = copy.deepcopy(vehicles_map[index])
@@ -27,28 +37,57 @@ def main():
 
     print(f"Goal car: {goal.id} at position {goal.position} with orientation {goal.orientation} and type {goal.vtype}\n")
 
+    
+    if algo_choice == "DFS":
+        algo = DFSAlgorithm(map)
+        result = algo.search(map.copy())
+    elif algo_choice == "BFS":
+        algo = BFSAlgorithm(map)
+        result = algo.search(map.copy())
+    elif algo_choice == "UCS":
+        algo = UCSAlgorithm(map.copy())
+        result = algo.search()
+    elif algo_choice == "A*":
+        algo = A_Algorithm(map.copy())
+        result = algo.search()
+    else:
+        print("Invaid Algorithm")
+        return
+    
+    '''
+    # DFS.
+>>>>>>> huyquangtruong06
     DFS = DFSAlgorithm(map)
     DFS.current_step = 0
     result = DFS.search(map.copy())
+
+    # A star
     A = A_Algorithm(map.copy())
     a_result = A.search()
+
+    # UCS
     UCS = UCSAlgorithm(map.copy())
     ucs_result = UCS.search()
-    controller = KeyboardOperation(A, A.solution_path)
-    handler = EventHandler(map, controller, initial_vehicles)
+
+    # BFS 
+    BFS = BFSAlgorithm(map)
+    BFS.current_step = 0
+    result = BFS.search(map.copy())'''
 
     if result is not None:
-        print(f"Solution found with {len(DFS.solution_path)} steps")
-        # Set initial state
-        map.vehicles = DFS.solution_path[0].vehicles
-        DFS.current_step = 0
+            print(f"Solution found with {len(algo.solution_path)} steps")
+            map.vehicles = algo.solution_path[0].vehicles
     else:
-        print("No solution found.")
+            print("No solution found.")
 
-    #handler = EventHandler(map, DFS)
     
+    controller = KeyboardOperation(algo, algo.solution_path)
+    handler = EventHandler(map, controller, initial_vehicles)
 
     clock = pygame.time.Clock()
+    run = True
+
+    #handler = EventHandler(map, DFS)
 
     while run:
         if not handler.handle_events():
@@ -59,8 +98,8 @@ def main():
 
         # Display step information
         font = pygame.font.SysFont('Arial', 16)
-        if DFS.solution_path:
-            step_text = f"Step: {controller.current_step + 1}/{len(DFS.solution_path)}"
+        if controller.Solution_Path:
+            step_text = f"Step: {controller.current_step + 1}/{len(controller.Solution_Path)}"
             text_surface = font.render(step_text, True, BLACK)
             window.screen.blit(text_surface, (10, 50))
             
@@ -73,6 +112,6 @@ def main():
         pygame.display.update()
         clock.tick(60)
         
-if __name__ == "__main__":
+if __name__ == "__main__" :
     main()
 
