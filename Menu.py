@@ -6,16 +6,16 @@ class Menu:
         self.screen = screen
         self.font = pygame.font.SysFont('Arial', 30)
         self.buttons = [
-            ("DFS", pygame.Rect(700, 150, 200, 50)),
-            ("BFS", pygame.Rect(700, 220, 200, 50)),
-            ("UCS", pygame.Rect(700, 290, 200, 50)),
-            ("A*", pygame.Rect(700, 360, 200, 50))
+            ("DFS", pygame.Rect(400, 150, 200, 50)),
+            ("BFS", pygame.Rect(400, 220, 200, 50)),
+            ("UCS", pygame.Rect(400, 290, 200, 50)),
+            ("A*", pygame.Rect(400, 360, 200, 50))
         ]
 
     def draw(self):
         self.screen.fill(WHITE)
         title_surface = self.font.render("Your Option :", True, BLACK)
-        self.screen.blit(title_surface, (700, 80))
+        self.screen.blit(title_surface, (400, 80))
 
         mouse_pos = pygame.mouse.get_pos()
         hand_cursor_needed = False
