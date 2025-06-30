@@ -6,7 +6,10 @@ class UCSAlgorithm:
         self.start_map = start_map
         self.solution_path = []
 
-    def search(self):
+    def search(self, start_map = None):
+        if start_map is not None:  # Nếu có truyền map mới
+            self.start_map = start_map
+            
         heap = BinaryMinHeap()
         heap.push(self.start_map)
 

@@ -58,7 +58,7 @@ class Map:
         # Display guide.
         font = pygame.font.SysFont('Arial', 16)
         instructions = [
-            "Scroll/Pinch to zoom | Drag to pan | R: Reset view",
+            "Scroll/Pinch to zoom | Drag to pan | R: Reset view | I: Reset to inital state",
             f"Zoom: {int((self.cell_size/BASE_CELL_SIZE)*100)}%"
         ]
         for vehicle in self.vehicles:
