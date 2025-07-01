@@ -2,9 +2,11 @@ import pygame
 from define import *
 
 class Menu:
-    def __init__(self, screen):
+    def __init__(self, screen, levels=None):
         self.screen = screen
         self.font = pygame.font.SysFont('Arial', 30)
+        self.levels = levels 
+
         '''
         self.buttons = [
             ("DFS", pygame.Rect(100, 150, 200, 50)),
@@ -36,7 +38,7 @@ class Menu:
         self.screen.blit(title_surface, (100, 80))'''
         self.update_buttons()
 
-        title_surface = self.font.render("Your Option :", True, BLACK)
+        title_surface = self.font.render(f"Your Option for Level {self.levels} :", True, BLACK)
         title_rect = title_surface.get_rect(center=(self.screen.get_width() // 2, 80))
         self.screen.blit(title_surface, title_rect)
 
@@ -58,7 +60,17 @@ class Menu:
         else:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
+        instructions = [
+            "Level 5 and above should be not used with UCS algorithm (it will take a lot of time).",
+        ]
+
+        font = pygame.font.SysFont('Arial', 16)
+        for i, text in enumerate(instructions):
+            text_surface = font.render(text, True, RED)
+            self.screen.blit(text_surface, (10, 10 + i * 20))
         pygame.display.flip()
+
+
     def get_algorithm_choice(self):
         while True:
             self.draw()

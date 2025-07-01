@@ -40,20 +40,6 @@ class KeyboardOperation:
         space_sound.play()
         self.last_step_time = pygame.time.get_ticks()
 
-    def reset(self, initial_map):
-        """Reset internal state and resolve the puzzle again."""
-        self.current_step = 0
-        self.auto_play = False
-        self.last_step_time = 0
-        self.Algorithm.visited = set()
-        self.Algorithm.Solution_Path = []
-
-        result = self.Algorithm.search(initial_map.copy())
-        if result is not None:
-            self.Solution_Path = self.Algorithm.Solution_Path
-     
-    
-
 
 
     

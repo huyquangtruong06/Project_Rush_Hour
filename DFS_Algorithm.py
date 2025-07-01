@@ -18,7 +18,7 @@ class DFSAlgorithm:
         self.visited.add(cur_signature)
 
         # Thêm map hiện tại vào path
-        path.append(cur_map)
+        path.append(cur_map.copy())
 
         # Kiểm tra goal
         if cur_map.get_goal_cars().position[0] + cur_map.get_goal_cars().vtype == GRID_SIZE:
@@ -30,13 +30,11 @@ class DFSAlgorithm:
 
         for i, vehicle in enumerate(cur_map.vehicles):
             for new_pos in vehicle.domain:
-                if vehicle.position == (new_pos[0], new_pos[1]):
-                    continue
 
                 new_map = cur_map.copy()
                 new_map.vehicles[i].position = (new_pos[0], new_pos[1])
 
-                result = self.search(new_map, path)
+                result = self.search(new_map.copy(), path)
                 if result is not None:
                     return result
 

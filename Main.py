@@ -29,14 +29,13 @@ def main():
 
         index =select_levels(window.screen)
 
-        menu = Menu(window.screen)
+        menu = Menu(window.screen, index)
         algo_choice = menu.get_algorithm_choice()
         if algo_choice is None:
             return
         
         # handler = EventHandler(map)
         map.vehicles = copy.deepcopy(vehicles_map[index])
-        initial_vehicles = copy.deepcopy(vehicles_map[index])
         map.get_domain_cars()
         goal = map.get_goal_cars()
 
@@ -62,13 +61,12 @@ def main():
 
         if result is not None:
                 print(f"Solution found with {len(algo.solution_path)} steps")
-                map.vehicles = algo.solution_path[0].vehicles
+                map = algo.solution_path[0].copy()
         else:
                 print("No solution found.")
-
         
         controller = KeyboardOperation(algo, algo.solution_path)
-        handler = EventHandler(map, controller, initial_vehicles)
+        handler = EventHandler(map.copy(), controller)
 
         clock = pygame.time.Clock()
         run = True
@@ -79,7 +77,7 @@ def main():
             if not handler.handle_events():
                 break
             window.fill(WHITE)
-            map.draw()
+            handler.map.draw()
             run = handler.handle_events()
 
             # Display step information
@@ -90,9 +88,9 @@ def main():
                 window.screen.blit(text_surface, (10, 110))
                 
                 if controller.auto_play:
-                    auto_text = font.render("Auto-play: ON", True, GREEN)
+                    auto_text = font.render("Pause game: OFF", True, GREEN)
                 else:
-                    auto_text = font.render("Auto-play: OFF", True, RED)
+                    auto_text = font.render("Pause game: ON", True, RED)
                 window.screen.blit(auto_text, (10, 130))
             
             pygame.display.update()

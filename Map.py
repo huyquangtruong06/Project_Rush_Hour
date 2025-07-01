@@ -26,7 +26,8 @@ class Map:
         new_map.dragging = self.dragging
         new_map.last_mouse_pos = self.last_mouse_pos
         new_map.vehicles = [vehicle.copy() for vehicle in self.vehicles]
-        new_map.parent = self.parent
+        
+        new_map.parent = self.parent 
         new_map.cost = self.cost
         return new_map
 
@@ -59,8 +60,8 @@ class Map:
         font = pygame.font.SysFont('Arial', 16)
         instructions = [
             "Scroll/Pinch to zoom | Drag to pan | R: Reset view | I: Reset to inital state",
-            "Arrow left keys: previous state | Arrow right keys: next state | I: Reset to initial state (wait a few seconds) | Space: Auto-play",
-            "P: Pause/Resume ",
+            "Arrow left keys: previous state | Arrow right keys: next state | I: Reset to initial state (wait a few seconds) | Space: Pause game",
+            f"Cost: {self.cost}",
             "ESC: Exit",
             f"Zoom: {int((self.cell_size/BASE_CELL_SIZE)*100)}%"
         ]

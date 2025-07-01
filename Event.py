@@ -4,10 +4,9 @@ import copy
 from pygame.locals import *
 from KeyboardOperation import move_sound, space_sound, i_sound
 class EventHandler:
-    def __init__(self, map, KeyboardOperation, initial_vehicles):
-        self.map = map
+    def __init__(self, map, KeyboardOperation):
+        self.map = map.copy()
         self.KeyboardOperation = KeyboardOperation
-        self.initial_vehicles = initial_vehicles  # Save initial state to allow reset(button I)
 
     def handle_events(self):
         current_time = pygame.time.get_ticks()
@@ -73,37 +72,30 @@ class EventHandler:
     def NextStep(self):
         next_state = self.KeyboardOperation.get_next_step()
         if next_state:
-            self.map.vehicles = [v.copy() for v in next_state.vehicles]
-            self.map.get_domain_cars()
+            self.map = next_state.copy()
 
     def LastStep(self):
         prev_state = self.KeyboardOperation.get_previous_step()
         if prev_state:
-            self.map.vehicles = [v.copy() for v in prev_state.vehicles]
-            self.map.get_domain_cars()
+            self.map = prev_state.copy()
 
     def AutoPlay(self, current_time):
         if self.KeyboardOperation.auto_play and current_time - self.KeyboardOperation.last_step_time > self.KeyboardOperation.step_delay:
             next_state = self.KeyboardOperation.get_next_step()
             if next_state:
-                self.map.vehicles = [v.copy() for v in next_state.vehicles]
-                self.map.get_domain_cars()
+                self.map = next_state.copy()
                 self.KeyboardOperation.last_step_time = current_time
             else:
                 self.KeyboardOperation.auto_play = False
 
     def ResetInitial(self):
         # Reset vehicles on map
-        self.map.vehicles = copy.deepcopy(self.initial_vehicles)
-        self.map.get_domain_cars()
-        self.map.setup_goal_cars()
         # Reset algorithm
         self.KeyboardOperation.visited = set()
-        self.KeyboardOperation.Solution_Path = []
+        # self.KeyboardOperation.Solution_Path = []
         self.KeyboardOperation.current_step = 0
         self.KeyboardOperation.auto_play = False
-        # Run dfs from a new state
-        self.KeyboardOperation.Algorithm.search(self.map.copy())
-        self.KeyboardOperation.Solution_Path = self.KeyboardOperation.Algorithm.solution_path
+        self.map = self.KeyboardOperation.Solution_Path[0].copy()
+
 
 
