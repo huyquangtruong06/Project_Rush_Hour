@@ -1,5 +1,6 @@
 # Setting parameters
 import pygame
+import pygame.mixer
 GRID_SIZE = 6
 BASE_CELL_SIZE = 80 # Base cell size
 MIN_CELL_SIZE = 40 # Minimum size when zoomed out
@@ -48,3 +49,10 @@ start_button = pygame.image.load("button/start.png")
 quit_button = pygame.image.load("button/end.png")
 forest_green = ((0,50,0))
 
+pygame.mixer.init()
+move_sound = pygame.mixer.Sound("music/moves.mp3")
+space_sound = pygame.mixer.Sound("music/space.mp3")
+i_sound = pygame.mixer.Sound("music/button_I.mp3")
+menu_sound = pygame.mixer.Sound("music/menu_sound.mp3")
+level_sound = pygame.mixer.Sound("music/level.mp3")
+traffic_sound = pygame.mixer.Sound("music/traffic.mp3")
