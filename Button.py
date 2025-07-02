@@ -32,3 +32,6 @@ class Button:
 
     def is_clicked(self, pos):
         return self.rect.collidepoint(pos)
+
+    def is_hovered(self, mouse_pos):
+        return self.rect.collidepoint(mouse_pos)

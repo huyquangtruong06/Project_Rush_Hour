@@ -6,6 +6,9 @@ pygame.mixer.init()
 move_sound = pygame.mixer.Sound("moves.mp3")
 space_sound = pygame.mixer.Sound("space.mp3")
 i_sound = pygame.mixer.Sound("button_I.mp3")
+menu_sound = pygame.mixer.Sound("menu_sound.mp3")
+level_sound = pygame.mixer.Sound("level.mp3")
+traffic_sound = pygame.mixer.Sound("traffic.mp3")
 
 class KeyboardOperation:
     def __init__(self, Algorithm, Solution_Path):

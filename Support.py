@@ -1,6 +1,8 @@
 from define import *
 from Button import Button
 import pygame
+from KeyboardOperation import menu_sound, level_sound
+
 def select_levels(screen):
 
     buttons = [
@@ -16,10 +18,15 @@ def select_levels(screen):
         Button(screen, 0.7, 0.9, LEVELS[9].convert_alpha(), 0.5),
     ]
     selected_level = False
+    level_sound.play(-1)
+
     while not selected_level:
         screen.fill(WHITE)
         for button in buttons:
             button.draw()
+
+        mouse_pos = pygame.mouse.get_pos()
+        hand_cursor_needed = any(button.is_hovered(mouse_pos) for button in buttons)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -29,7 +36,14 @@ def select_levels(screen):
                 for i in range(len(buttons)):
                     if buttons[i].is_clicked(event.pos):
                         print(f"Level {i + 1} selected")
-                        return i 
+                        level_sound.stop()
+                        return i
+        if hand_cursor_needed:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
         pygame.display.update()
 
 def start_menu(screen):
@@ -37,15 +51,21 @@ def start_menu(screen):
     Quit_button = Button(screen, 0.5, 0.7, quit_button.convert_alpha(), 0.25)
 
     while True:
+        menu_sound.play()
         screen.fill(WHITE)
         Start_button.draw()
         Quit_button.draw()
+        mouse_pos = pygame.mouse.get_pos()
+        hand_cursor_needed = (
+            Start_button.is_hovered(mouse_pos) or Quit_button.is_hovered(mouse_pos))
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                menu_sound.stop()
                 pygame.quit()
                 return False
             if event.type == pygame.MOUSEBUTTONDOWN:
+                menu_sound.stop()
                 if Start_button.is_clicked(event.pos):
                     print("Start button clicked")
                     return True
@@ -53,7 +73,10 @@ def start_menu(screen):
                     print("Quit button clicked")
                     pygame.quit()
                     return False
-
+        if hand_cursor_needed:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
         pygame.display.update()
 
     return True

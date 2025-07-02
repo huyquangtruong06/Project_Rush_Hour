@@ -20,6 +20,7 @@ def main():
     while play:
         
         pygame.init()
+        pygame.font.init()
         window = Window()
         play = start_menu(window.screen)
         if not play:
@@ -28,13 +29,26 @@ def main():
         map = Map(window.screen)
 
         index =select_levels(window.screen)
-
-        menu = Menu(window.screen, index)
-        algo_choice = menu.get_algorithm_choice()
-        if algo_choice is None:
+        if index is None :
             return
         
+        while True:
+            menu = Menu(window.screen, index)
+            algo_choice = menu.get_algorithm_choice()
+            if algo_choice == "BACK":
+                index = select_levels(window.screen)
+                if index is None:
+                    return  # Người dùng thoát
+                continue
+            elif algo_choice is None:
+                return  # Người dùng tắt cửa sổ
+            else:
+                break  
+        
+        menu = Menu(window.screen, index)
+        #algo_choice = menu.get_algorithm_choice()
         # handler = EventHandler(map)
+        
         map.vehicles = copy.deepcopy(vehicles_map[index])
         map.get_domain_cars()
         goal = map.get_goal_cars()
@@ -42,7 +56,6 @@ def main():
 
         print(f"Goal car: {goal.id} at position {goal.position} with orientation {goal.orientation} and type {goal.vtype}\n")
 
-        
         if algo_choice == "DFS":
             algo = DFSAlgorithm(map)
             result = algo.search(map.copy())
@@ -88,9 +101,9 @@ def main():
                 window.screen.blit(text_surface, (10, 110))
                 
                 if controller.auto_play:
-                    auto_text = font.render("Pause game: OFF", True, GREEN)
+                    auto_text = font.render("Pause game: ON", True, GREEN)
                 else:
-                    auto_text = font.render("Pause game: ON", True, RED)
+                    auto_text = font.render("Pause game: OFF", True, RED)
                 window.screen.blit(auto_text, (10, 130))
             
             pygame.display.update()
