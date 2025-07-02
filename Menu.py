@@ -59,7 +59,7 @@ class Menu:
 
         font = pygame.font.SysFont('Arial', 16)
         for i, text in enumerate(instructions):
-            text_surface = font.render(text, True, RED)
+            text_surface = font.render(text, True, AMBER)
             self.screen.blit(text_surface, (10, 10 + i * 20))
         pygame.display.flip()
             
