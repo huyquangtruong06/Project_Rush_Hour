@@ -38,7 +38,7 @@ class Menu:
         self.screen.blit(title_surface, (100, 80))'''
         self.update_buttons()
 
-        title_surface = self.font.render(f"Your Option for Level {self.levels} :", True, BLACK)
+        title_surface = self.font.render(f"Your Option for Level {self.levels + 1} :", True, BLACK)
         title_rect = title_surface.get_rect(center=(self.screen.get_width() // 2, 80))
         self.screen.blit(title_surface, title_rect)
 
