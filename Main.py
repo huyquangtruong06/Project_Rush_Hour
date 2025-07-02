@@ -83,7 +83,7 @@ def main():
         run = True
 
         while run:
-            if not handler.handle_events():
+            if not handler.handle_events() or not result:
                 break
             scaled_bg = scale_background(bg_game, window.screen)
             window.screen.blit(scaled_bg, (0, 0))

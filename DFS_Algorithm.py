@@ -14,23 +14,27 @@ class DFSAlgorithm:
         self.memory_usage_kb = 0
 
     def search(self, cur_map, path=None):
-        if path is None:
-            path = []
+        try:
+            if path is None:
+                path = []
 
-        start_time = time.time()
-        tracemalloc.start()
-        result = self._dfs(cur_map, path)
-        self.execution_time = time.time() - start_time
-        _, peak = tracemalloc.get_traced_memory()
-        self.memory_usage_kb = peak // 1024
-        tracemalloc.stop()
+            start_time = time.time()
+            tracemalloc.start()
+            result = self._dfs(cur_map, path)
+            self.execution_time = time.time() - start_time
+            _, peak = tracemalloc.get_traced_memory()
+            self.memory_usage_kb = peak // 1024
+            tracemalloc.stop()
 
-        if result:
-            print(f"[DFS] Time: {self.execution_time:.4f}s | Nodes expanded: {self.nodes_expanded} | Max frontier size: {self.max_frontier_size} | Memory usage: {self.memory_usage_kb} KB")
-        else:
-            print(f"[DFS] No solution. Time: {self.execution_time:.4f}s | Nodes expanded: {self.nodes_expanded} | Max frontier size: {self.max_frontier_size} | Memory usage: {self.memory_usage_kb} KB")
+            if result:
+                print(f"[DFS] Time: {self.execution_time:.4f}s | Nodes expanded: {self.nodes_expanded} | Max frontier size: {self.max_frontier_size} | Memory usage: {self.memory_usage_kb} KB")
+            else:
+                print(f"[DFS] No solution. Time: {self.execution_time:.4f}s | Nodes expanded: {self.nodes_expanded} | Max frontier size: {self.max_frontier_size} | Memory usage: {self.memory_usage_kb} KB")
 
-        return result
+            return result
+        except RecursionError as e:
+            print(f"[DFS] Recursion limit reached: {e}")
+            return None
 
     def _dfs(self, cur_map, path):
         self.max_frontier_size = max(self.max_frontier_size, len(path))
