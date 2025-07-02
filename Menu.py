@@ -1,6 +1,7 @@
 import pygame
 from define import *
 from KeyboardOperation import traffic_sound
+from Support import scale_background
 
 class Menu:
     def __init__(self, screen, levels=None):
@@ -39,7 +40,9 @@ class Menu:
         title_surface = self.font.render("Your Option :", True, BLACK)
         self.screen.blit(title_surface, (100, 80))'''
         self.update_buttons()
-        self.draw_decorations() # Draw
+        #self.draw_decorations(self.screen) # Draw
+        scaled_bg = scale_background(bg_algorithms, self.screen)
+        self.screen.blit(scaled_bg, (0, 0))
 
         title_surface = self.font.render(f"Your Option for Level {self.levels + 1} :", True, BLACK)
         title_rect = title_surface.get_rect(center=(self.screen.get_width() // 2, 80))
@@ -53,8 +56,8 @@ class Menu:
                 pygame.draw.rect(self.screen, forest_green, rect)
                 hand_cursor_needed = True
             else:
-                pygame.draw.rect(self.screen, BLUE, rect)
-            text = self.font.render(label, True, WHITE)
+                pygame.draw.rect(self.screen, WHITE, rect)
+            text = self.font.render(label, True, BLUE)
             text_rect = text.get_rect(center=rect.center)
             self.screen.blit(text, text_rect)
 
@@ -73,7 +76,10 @@ class Menu:
             self.screen.blit(text_surface, (10, 10 + i * 20))
         pygame.display.flip()
 
-    def draw_decorations(self):
+    '''def draw_decorations(self, screen):
+        scaled_bg = scale_background(bg_algorithms, screen)
+        screen.blit(scaled_bg, (0, 0))
+        
         # List of cars with positions and colors
         cars = [
             {"x": 50, "y": self.screen.get_height() - 100, "color": RED},
@@ -201,7 +207,7 @@ class Menu:
         # Draw road lines
         road_y = self.screen.get_height() - 60
         for x in range(0, self.screen.get_width(), 40):
-            pygame.draw.rect(self.screen, YELLOW, (x, road_y, 20, 5))  # Dashed road lines
+            pygame.draw.rect(self.screen, YELLOW, (x, road_y, 20, 5))  # Dashed road lines'''
             
     def get_algorithm_choice(self):
         while True:
