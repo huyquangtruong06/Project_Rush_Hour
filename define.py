@@ -29,6 +29,11 @@ BROWN = (139, 69, 19)  # For tree trunks
 MAROON = (128, 0, 0)
 OLIVE = (0, 128, 0)
 CYAN = (0, 255, 255)
+
+SOFT_GOLD = (255, 223, 128)
+PALE_CYAN = (173, 216, 230)  
+IVORY = (255, 255, 240)  # Soft ivory color
+AMBER = (255, 200, 0)  # Soft amber color
 COLORS = [RED, BLUE, GREEN, YELLOW, PURPLE, PINK, ORANGE, CYAN, MAROON, OLIVE]
 
 #level game
@@ -56,3 +61,7 @@ i_sound = pygame.mixer.Sound("music/button_I.mp3")
 menu_sound = pygame.mixer.Sound("music/menu_sound.mp3")
 level_sound = pygame.mixer.Sound("music/level.mp3")
 traffic_sound = pygame.mixer.Sound("music/traffic.mp3")
+
+bg_start_menu = pygame.image.load("background/start_menu.jpg")
+bg_level_menu = pygame.image.load("background/level_menu.jpg")
+bg_game = pygame.image.load("background/game.jpg")

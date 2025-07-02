@@ -89,7 +89,8 @@ def main():
         while run:
             if not handler.handle_events():
                 break
-            window.fill(WHITE)
+            scaled_bg = scale_background(bg_game, window.screen)
+            window.screen.blit(scaled_bg, (0, 0))
             handler.map.draw()
             run = handler.handle_events()
 
@@ -97,7 +98,7 @@ def main():
             font = pygame.font.SysFont('Arial', 16)
             if controller.Solution_Path:
                 step_text = f"Step: {controller.current_step + 1}/{len(controller.Solution_Path)}"
-                text_surface = font.render(step_text, True, BLACK)
+                text_surface = font.render(step_text, True, CYAN)
                 window.screen.blit(text_surface, (10, 110))
                 
                 if controller.auto_play:

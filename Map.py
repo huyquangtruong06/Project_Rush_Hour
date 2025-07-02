@@ -35,7 +35,7 @@ class Map:
         """Draw grid with current size"""
         for row in range(GRID_SIZE + 1):
             pygame.draw.line(
-                self.screen, BLACK,
+                self.screen, WHITE,
                 (self.offset_x, self.offset_y + row * self.cell_size),
                 (self.offset_x + GRID_SIZE * self.cell_size, self.offset_y + row * self.cell_size),
                 2
@@ -43,7 +43,7 @@ class Map:
         
         for col in range(GRID_SIZE + 1):
             pygame.draw.line(
-                self.screen, BLACK,
+                self.screen, WHITE,
                 (self.offset_x + col * self.cell_size, self.offset_y),
                 (self.offset_x + col * self.cell_size, self.offset_y + GRID_SIZE * self.cell_size),
                 2
@@ -69,7 +69,7 @@ class Map:
             vehicle.draw(self.screen, self.cell_size, self.offset_x, self.offset_y)
         
         for i, text in enumerate(instructions):
-            text_surface = font.render(text, True, BLACK)
+            text_surface = font.render(text, True, CYAN)
             self.screen.blit(text_surface, (10, 10 + i * 20))
     
     def zoom(self, factor, mouse_pos=None):

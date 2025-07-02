@@ -21,7 +21,8 @@ def select_levels(screen):
     level_sound.play(-1)
 
     while not selected_level:
-        screen.fill(WHITE)
+        scaled_bg = scale_background(bg_level_menu, screen)
+        screen.blit(scaled_bg, (0, 0))
         for button in buttons:
             button.draw()
 
@@ -52,7 +53,8 @@ def start_menu(screen):
 
     while True:
         menu_sound.play()
-        screen.fill(WHITE)
+        scaled_bg = scale_background(bg_start_menu, screen)
+        screen.blit(scaled_bg, (0, 0))
         Start_button.draw()
         Quit_button.draw()
         mouse_pos = pygame.mouse.get_pos()
@@ -80,3 +82,7 @@ def start_menu(screen):
         pygame.display.update()
 
     return True
+
+def scale_background(bg_image, screen):
+    screen_width, screen_height = screen.get_size()
+    return pygame.transform.scale(bg_image, (screen_width, screen_height))
