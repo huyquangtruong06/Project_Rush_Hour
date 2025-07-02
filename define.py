@@ -54,6 +54,7 @@ start_button = pygame.image.load("button/start.png")
 quit_button = pygame.image.load("button/end.png")
 forest_green = ((0,50,0))
 
+#music
 pygame.mixer.init()
 move_sound = pygame.mixer.Sound("music/moves.mp3")
 space_sound = pygame.mixer.Sound("music/space.mp3")
@@ -62,6 +63,7 @@ menu_sound = pygame.mixer.Sound("music/menu_sound.mp3")
 level_sound = pygame.mixer.Sound("music/level.mp3")
 traffic_sound = pygame.mixer.Sound("music/traffic.mp3")
 
+# Background images
 bg_start_menu = pygame.image.load("background/start_menu.jpg")
 bg_level_menu = pygame.image.load("background/level_menu.jpg")
 bg_game = pygame.image.load("background/game.jpg")

@@ -1,7 +1,6 @@
 import time
 import tracemalloc
 from BinaryMinHeap import BinaryMinHeap
-import copy
 
 class UCSAlgorithm:
     def __init__(self, start_map):

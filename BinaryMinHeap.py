@@ -1,7 +1,7 @@
 from Map import *
 class PriorityQueueNode:
     def __init__(self, map_obj):
-        self.map = map_obj  # map: đối tượng Map
+        self.map = map_obj  
 
     def __lt__(self, other):
         return self.map.cost < other.map.cost
@@ -9,11 +9,11 @@ class PriorityQueueNode:
 class BinaryMinHeap:
     def __init__(self):
         self.heap = []
-        self.seen_signatures = set()  # lưu chữ ký các trạng thái đã thêm vào
+        self.seen_signatures = set()  
 
     def push(self, map_obj):
         if self.contains(map_obj):
-            return  # bỏ qua nếu map đã tồn tại trong heap
+            return  
 
         node = PriorityQueueNode(map_obj)
         self.heap.append(node)
@@ -29,7 +29,7 @@ class BinaryMinHeap:
         self._heapify_down(0)
 
         sig = min_node.map.get_map_signature()
-        self.seen_signatures.discard(sig)  # Xóa khỏi set để cho phép tái chèn nếu cần sau này
+        self.seen_signatures.discard(sig)  
 
         return min_node.map
 
@@ -57,7 +57,6 @@ class BinaryMinHeap:
         self.heap[i], self.heap[j] = self.heap[j], self.heap[i]
     
     def contains(self, map_obj):
-        """Kiểm tra xem map đã từng được thêm vào heap chưa"""
         return map_obj.get_map_signature() in self.seen_signatures
 
     def is_empty(self):

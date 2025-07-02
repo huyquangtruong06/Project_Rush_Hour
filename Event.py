@@ -1,6 +1,5 @@
 import pygame
 from define import *
-import copy
 from pygame.locals import *
 from KeyboardOperation import move_sound, space_sound, i_sound
 class EventHandler:
@@ -89,10 +88,7 @@ class EventHandler:
                 self.KeyboardOperation.auto_play = False
 
     def ResetInitial(self):
-        # Reset vehicles on map
-        # Reset algorithm
         self.KeyboardOperation.visited = set()
-        # self.KeyboardOperation.Solution_Path = []
         self.KeyboardOperation.current_step = 0
         self.KeyboardOperation.auto_play = False
         self.map = self.KeyboardOperation.Solution_Path[0].copy()

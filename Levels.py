@@ -3,7 +3,7 @@ from Vehicles import Vehicle, Orientations, VehicleTypes
 vehicles_map = [
     # Map 1: 
     [
-        Vehicle("A", (2, 2), Orientations.horizontal, VehicleTypes.car, 0),  # Xe cần thoát
+        Vehicle("A", (2, 2), Orientations.horizontal, VehicleTypes.car, 0),  
         Vehicle("B", (0, 0), Orientations.vertical, VehicleTypes.car, 1),
         Vehicle("C", (0, 3), Orientations.vertical, VehicleTypes.car, 2),
     ],

@@ -46,8 +46,6 @@ def main():
                 break  
         
         menu = Menu(window.screen, index)
-        #algo_choice = menu.get_algorithm_choice()
-        # handler = EventHandler(map)
         
         map.vehicles = copy.deepcopy(vehicles_map[index])
         map.get_domain_cars()
@@ -83,8 +81,6 @@ def main():
 
         clock = pygame.time.Clock()
         run = True
-
-        #handler = EventHandler(map, DFS)
 
         while run:
             if not handler.handle_events():

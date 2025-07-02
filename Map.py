@@ -1,5 +1,4 @@
 from Vehicles import *
-import copy
 
 class Map:
     def __init__(self, screen, parent = None, cost = 0):

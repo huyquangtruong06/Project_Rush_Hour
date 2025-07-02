@@ -1,7 +1,6 @@
 import time
 import tracemalloc
 from collections import deque
-import copy
 from Map import *
 
 class BFSAlgorithm:

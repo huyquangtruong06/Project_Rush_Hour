@@ -1,7 +1,6 @@
 from enum import IntEnum
 from define import *
 import pygame
-import sys
 
 class VehicleTypes(IntEnum):
     car = 2

@@ -5,7 +5,7 @@ class Button:
         self.screen = screen
         self.image_original = image
         self.scale = scale
-        self.rel_x = rel_x  # giá trị từ 0 -> 1
+        self.rel_x = rel_x  
         self.rel_y = rel_y
 
         self.update_position()

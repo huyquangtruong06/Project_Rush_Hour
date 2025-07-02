@@ -9,5 +9,4 @@ class Window():
         pygame.display.set_icon(programIcon)
         
     def fill(self, color):
-        """Fill the screen with a color."""
         self.screen.fill(color)

@@ -26,7 +26,6 @@ class KeyboardOperation:
             move_sound.play()
             return self.Solution_Path[self.current_step]
         
-        # Nếu đang ở bước 0, vẫn trả lại bước 0 để đảm bảo giao diện cập nhật
         return self.Solution_Path[0]
 
     # auto
