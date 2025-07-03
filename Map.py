@@ -58,7 +58,7 @@ class Map:
         # Display guide.
         font = pygame.font.SysFont('Arial', 16)
         instructions = [
-            "Scroll/Pinch to zoom | Drag to pan | R: Reset view | I: Reset to inital state",
+            "Scroll/Pinch to zoom | Drag to pan | R: Reset view ",
             "Arrow left keys: previous state | Arrow right keys: next state | I: Reset to initial state (wait a few seconds) | Space: Pause game",
             f"Cost: {self.cost}",
             "ESC: Exit",
