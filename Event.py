@@ -2,6 +2,7 @@ import pygame
 from define import *
 from pygame.locals import *
 from KeyboardOperation import move_sound, space_sound, i_sound
+
 class EventHandler:
     def __init__(self, map, KeyboardOperation):
         self.map = map.copy()
