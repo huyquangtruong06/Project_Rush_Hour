@@ -55,6 +55,7 @@ class DFSAlgorithm:
             for new_pos in vehicle.domain:
                 new_map = cur_map.copy()
                 new_map.vehicles[i].position = (new_pos[0], new_pos[1])
+                new_map.cost += new_pos[2]
                 result = self._dfs(new_map.copy(), path)
                 if result is not None:
                     return result

@@ -49,6 +49,7 @@ class BFSAlgorithm:
                         continue
                     new_map = current_map.copy()
                     new_map.vehicles[i].position = new_pos
+                    new_map.cost += new_pos[2]
                     queue.append((new_map, path))
 
         self.execution_time = time.time() - start_time
