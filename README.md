@@ -10,7 +10,7 @@
   - Display the graphical interface of the game Rush Hour  
   - Draw cars, grids, and exit points on the `pygame` window  
   - Allow zooming, panning, and viewing the status of the cars  
-  - Aim to integrate path-finding algorithms in the future  
+  - Integrate path-finding algorithms (BFS/DFS/UCS/A*) to solve the puzzle
 
 ## 2️⃣ FILE STRUCTURE
 
