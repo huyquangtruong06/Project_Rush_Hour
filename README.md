@@ -52,3 +52,10 @@
 - 📂 Allow reading input status from file
 ## 6️⃣ COPYRIGHT
 - 🆓 Freely share, edit, and study for educational purposes.
+
+
+
+
+
+
+
